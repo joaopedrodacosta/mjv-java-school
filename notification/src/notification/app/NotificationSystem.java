@@ -30,7 +30,7 @@ public class NotificationSystem {
 		Endereco endereco = new Endereco();
 		endereco.setBairro("Santo Antonio");
 		endereco.setCep("27.310-657");
-		endereco.setCidade("São Paulo");
+		endereco.setCidade("Sï¿½o Paulo");
 		endereco.setEstado("SP");
 		endereco.setLogradouro("Rua das Marias");
 		endereco.setNumero("243");
