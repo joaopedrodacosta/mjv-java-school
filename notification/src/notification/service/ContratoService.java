@@ -4,7 +4,7 @@ import notification.model.contrato.Contrato;
 
 public class ContratoService {
 	public String gerarConteudoContrato(Contrato contrato){
-		//power classes
+		//power classes testando StringBuilder
         
 		StringBuilder cs = new StringBuilder();
 		cs.append("Senhor(a)").append(contrato.getCadastro().getPessoa().getNome()).append(" Informamos que conforme o contrato com protocolo de número ").append(contrato.getNumeroProtocolo());
