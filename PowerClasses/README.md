@@ -372,7 +372,7 @@ StringBuilder.
 
 Teste dos métodos
 
-  public class TesteMetodos {
+    public class TesteMetodos {
 
     public static void main(String[] args) {
   
@@ -403,7 +403,7 @@ Teste dos métodos
 
 Teste de performance
 
-public class TestePerf {
+    public class TestePerf {
 
     public static void main(String[] args)  {
     
