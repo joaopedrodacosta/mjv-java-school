@@ -1,4 +1,4 @@
-package notification.model.cadastro;
+package com.mjvschool.atracao.model.cadastro;
 
 public class Endereco {
 	private String logradouro;
@@ -7,16 +7,9 @@ public class Endereco {
 	private String bairro;
 	private String cidade;
 	private String estado;
-	private String pais;
 	
 	public String getLogradouro() {
 		return logradouro;
-	}
-	public String getPais() {
-		return pais;
-	}
-	public void setPais(String pais) {
-		this.pais = pais;
 	}
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
