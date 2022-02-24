@@ -369,12 +369,14 @@ StringBuilder.
 ![StringBuilder2](https://user-images.githubusercontent.com/86434650/155191580-3c24c2fa-5ff7-42ae-bbe0-8729599b02d1.png)
 
 **Outros exemplos**
+
 Teste dos métodos
 
-public class TesteMetodos {
-    public static void main(String[] args) {
-        StringBuilder string1 = new StringBuilder("João Pedro");
+    public class TesteMetodos {
 
+    public static void main(String[] args) {
+  
+        StringBuilder string1 = new StringBuilder("João Pedro");
         System.out.printf("string 1 = %s%n", string1.toString());
         System.out.printf("Capacidade = %s%n", string1.capacity());
         System.out.printf("Comprimento = %s%n", string1.length());
@@ -401,8 +403,10 @@ public class TesteMetodos {
 
 Teste de performance
 
-public class TestePerf {
+    public class TestePerf {
+
     public static void main(String[] args)  {
+    
         long inicio = System.currentTimeMillis();
         concatString(30_000);
         long fim  = System.currentTimeMillis();
