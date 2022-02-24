@@ -3,17 +3,16 @@ package com.mjvschool.atracao.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class FormatUtil {
 
-    public static String formatarData(Date dataHora) {
+    public static String formatarData(Date data) {
 
         SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDD");
-        String formatado = sdf.format(dataHora);
+        String formatado = sdf.format(data);
         SimpleDateFormat sdf2 = new SimpleDateFormat("HHMM");
-        Date hora = Calendar.getInstance().getTime(); // pegando a hora
+        long hora = data.getTime(); // pegando a hora
         String horaFormatada = sdf2.format(hora);
         String formatoFinal = (formatado.concat("\n") + horaFormatada);
 

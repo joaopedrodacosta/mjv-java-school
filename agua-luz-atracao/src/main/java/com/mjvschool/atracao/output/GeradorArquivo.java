@@ -42,7 +42,7 @@ public class GeradorArquivo {
 		for(Contrato ct: contratos) {
 			conteudo.append(FormatUtil.formatarCpf(ct.getCadastro().getCpf())).append("\n");
 			conteudo.append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome())).append("\n");
-			conteudo.append(FormatUtil.formatarData(ct.getDataHora())).append("\n");
+			conteudo.append(FormatUtil.formatarData(ct.getData())).append("\n");
 			conteudo.append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
 			
 			conteudo.append("\n");

@@ -33,7 +33,7 @@ public class AguaLuzAtracaoApp {
 		
 		Pessoa pessoa = new Pessoa();
 		pessoa.setCpf("56737284094");
-		pessoa.setNome("Gleyson Sampaio de Oliveira");
+		pessoa.setNome("Gleyson Sampaio de Oliveiraa");
 		pessoa.setRg("89789");
 		pessoa.setPais(Pais.BRASIL);
 		
@@ -49,7 +49,7 @@ public class AguaLuzAtracaoApp {
 		endereco.setNumero("243");
 		pessoa.setEndereco(endereco);
 		contrato1.setCadastro(pessoa);
-		contrato1.setDataHora(new Date());
+		contrato1.setData(new Date());
 		
 		contratoRepositorio.gravar(contrato1);
 		
@@ -74,7 +74,7 @@ public class AguaLuzAtracaoApp {
 		endereco2.setNumero("243");
 		pessoa2.setEndereco(endereco2);
 		contrato2.setCadastro(pessoa2);
-		contrato2.setDataHora(new Date());
+		contrato2.setData(new Date());
 		
 		contratoRepositorio.gravar(contrato2);
 	}

@@ -13,19 +13,22 @@ public class Contrato {
 	private Date data;
 	private Servico servico;
 
-	
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+
 	public Servico getServico() {
 		return servico;
 	}
 	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
-	public void setDataHora(Date data) {
-		this.data = data;
-	}
-	public Date getDataHora() {
-		return data;
-	}
+	
 	public long getNumeroProtocolo() {
 		return numeroProtocolo;
 	}
@@ -42,5 +45,6 @@ public class Contrato {
 	public String toString() {
 		return "Contrato [numeroProtocolo=" + numeroProtocolo + ", dataHora=" + data + "]";
 	}
+	
 	
 }
