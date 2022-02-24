@@ -50,5 +50,6 @@ public class NotificationSystem {
 			transmissor = new TransmissorMensagemWhats();
 		
 		transmissor.transmitir(contrato.getCadastro().getPessoa().getTelefone(), mensagem);
+		
 	}
 }
