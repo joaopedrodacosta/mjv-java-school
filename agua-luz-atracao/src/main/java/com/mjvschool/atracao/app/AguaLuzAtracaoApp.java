@@ -1,6 +1,7 @@
 package com.mjvschool.atracao.app;
 
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -14,11 +15,11 @@ import com.mjvschool.atracao.repository.ContratoRepository;
 
 public class AguaLuzAtracaoApp {
 	private static ContratoRepository contratoRepositorio = new ContratoRepository();
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		faseAtracao();
 		faseGeracaoArquivo();
 	}
-	private static void faseGeracaoArquivo() {
+	private static void faseGeracaoArquivo() throws ParseException {
 		List<Contrato> contratos =  contratoRepositorio.listarTodos();
 		GeradorArquivo gerador = new GeradorArquivo();
 		gerador.gerarArquivoCsv(contratos);

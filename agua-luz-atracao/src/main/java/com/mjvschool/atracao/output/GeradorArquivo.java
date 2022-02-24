@@ -6,9 +6,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.List;
 
 import com.mjvschool.atracao.model.contrato.Contrato;
+import com.mjvschool.atracao.util.FormatUtil;
 import com.mjvschool.atracao.util.TextoUtil;
 
 public class GeradorArquivo {
@@ -34,14 +36,15 @@ public class GeradorArquivo {
 			e.printStackTrace();
 		}
 	}
-	public void gerarArquivoTxt(List<Contrato> contratos) {
+	public void gerarArquivoTxt(List<Contrato> contratos) throws ParseException {
 		StringBuilder conteudo =new StringBuilder();
 		
 		for(Contrato ct: contratos) {
-			conteudo.append(ct.getCadastro().getCpf()).append("\n");
-			conteudo.append(TextoUtil.formatarNome(ct.getCadastro().getNome())).append("\n");
-			conteudo.append(TextoUtil.formatarData(ct.getDataHora())).append("\n");
-			conteudo.append(ct.getCadastro().getCelular());
+			conteudo.append(FormatUtil.formatarCpf(ct.getCadastro().getCpf())).append("\n");
+			conteudo.append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome())).append("\n");
+			conteudo.append(FormatUtil.formatarData(ct.getDataHora())).append("\n");
+			conteudo.append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
+			
 			conteudo.append("\n");
 		}
 		

@@ -11,6 +11,8 @@ public class Contrato {
 	private Pessoa cadastro;
 	private Date dataHora;
 	private Servico servico;
+
+	
 	public Servico getServico() {
 		return servico;
 	}
