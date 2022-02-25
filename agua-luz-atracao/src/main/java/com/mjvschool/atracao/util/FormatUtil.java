@@ -8,8 +8,10 @@ import java.time.format.DateTimeFormatter;
 public class FormatUtil {
 
     public static String formatarData(LocalDateTime dataHora) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYYMMDD");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd HHmm");
         String formatoFinal = dataHora.format(formatter);
+        
         
 		return formatoFinal;
         
