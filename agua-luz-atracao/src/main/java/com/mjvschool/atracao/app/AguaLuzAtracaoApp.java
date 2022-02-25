@@ -2,7 +2,7 @@ package com.mjvschool.atracao.app;
 
 
 import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mjvschool.atracao.model.cadastro.Endereco;
@@ -49,7 +49,7 @@ public class AguaLuzAtracaoApp {
 		endereco.setNumero("243");
 		pessoa.setEndereco(endereco);
 		contrato1.setCadastro(pessoa);
-		contrato1.setData(new Date());
+		contrato1.setDataHora(LocalDateTime.now());
 		
 		contratoRepositorio.gravar(contrato1);
 		
@@ -74,7 +74,7 @@ public class AguaLuzAtracaoApp {
 		endereco2.setNumero("243");
 		pessoa2.setEndereco(endereco2);
 		contrato2.setCadastro(pessoa2);
-		contrato2.setData(new Date());
+		contrato2.setDataHora(LocalDateTime.now());
 		
 		contratoRepositorio.gravar(contrato2);
 	}

@@ -2,23 +2,17 @@ package com.mjvschool.atracao.util;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FormatUtil {
 
-    public static String formatarData(Date data) {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYYMMDD");
-        String formatado = sdf.format(data);
-        SimpleDateFormat sdf2 = new SimpleDateFormat("HHMM");
-        long hora = data.getTime(); // pegando a hora
-        String horaFormatada = sdf2.format(hora);
-        String formatoFinal = (formatado.concat("\n") + horaFormatada);
-
+    public static String formatarData(LocalDateTime dataHora) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYYMMDD");
+        String formatoFinal = dataHora.format(formatter);
+        
 		return formatoFinal;
         
-		
 	}
 
     public static String formatarCelular(String numero) throws ParseException {
