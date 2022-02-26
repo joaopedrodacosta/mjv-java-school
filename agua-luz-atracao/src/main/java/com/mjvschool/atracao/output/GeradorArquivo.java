@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 
+
 import com.mjvschool.atracao.model.contrato.Contrato;
 import com.mjvschool.atracao.util.FormatUtil;
 import com.mjvschool.atracao.util.TextoUtil;
@@ -43,6 +44,11 @@ public class GeradorArquivo {
 			conteudo.append(FormatUtil.formatarCpf(ct.getCadastro().getCpf())).append("\n");
 			conteudo.append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome())).append("\n");
 			conteudo.append(FormatUtil.formatarData(ct.getDataHora())).append("\n");
+			conteudo.append(TextoUtil.formatarNome("logradouro", ct.getCadastro().getEndereco().getLogradouro())).append("\n");
+			//numero
+			conteudo.append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento())).append("\n");
+			conteudo.append(TextoUtil.formatarNome("bairro", ct.getCadastro().getEndereco().getBairro())).append("\n");
+			conteudo.append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade())).append(ct.getCadastro().getEndereco().getEstado().sigla()).append("\n");
 			conteudo.append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
 			
 			conteudo.append("\n");

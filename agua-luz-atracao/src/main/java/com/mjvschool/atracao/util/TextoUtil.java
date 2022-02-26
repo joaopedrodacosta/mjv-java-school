@@ -11,24 +11,30 @@ public class TextoUtil {
 		nomef.setLength(30);
 		}
 		
-		if(tipo.equalsIgnoreCase("Logradouro")){
+		if(tipo.equalsIgnoreCase("logradouro")){
 		nomef.append(textoOriginal);
 		nomef.setLength(20);
 		
 	}
-		if(tipo.equalsIgnoreCase("Complemento")){
+		if(tipo.equalsIgnoreCase("complemento")){
 		nomef.append(textoOriginal);
 		nomef.setLength(10);
 	}
 
-	if(tipo.equalsIgnoreCase("Bairro")){
+	if(tipo.equalsIgnoreCase("bairro")){
 		nomef.append(textoOriginal);
 		nomef.setLength(15);
 
 	}
 
+	if(tipo.equalsIgnoreCase("cidade")){
+		nomef.append(textoOriginal);
+		nomef.setLength(30);
+
+	}
+
 	
-	  return nomef.toString();
+	  return nomef.toString().toUpperCase();
 
   }
 }
