@@ -28,7 +28,7 @@ public class AguaLuzAtracaoApp {
 	}
 	private static void faseAtracao() {
 		Contrato contrato1 = new Contrato();
-		contrato1.setNumeroProtocolo(123);
+		contrato1.setNumeroProtocolo(78678);
 		contrato1.setServico(Servico.LUZ);
 		
 		Pessoa pessoa = new Pessoa();
@@ -55,7 +55,7 @@ public class AguaLuzAtracaoApp {
 		contratoRepositorio.gravar(contrato1);
 		
 		Contrato contrato2 = new Contrato();
-		contrato2.setNumeroProtocolo(78678);
+		contrato2.setNumeroProtocolo(1984365);
 		contrato2.setServico(Servico.AGUA);
 		
 		Pessoa pessoa2 = new Pessoa();
