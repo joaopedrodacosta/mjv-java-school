@@ -9,7 +9,6 @@ import com.mjvschool.atracao.model.cadastro.Endereco;
 import com.mjvschool.atracao.model.cadastro.Pais;
 import com.mjvschool.atracao.model.cadastro.Pessoa;
 import com.mjvschool.atracao.model.cadastro.Servico;
-import com.mjvschool.atracao.model.cadastro.UnidadeFederacao;
 import com.mjvschool.atracao.model.contrato.Contrato;
 import com.mjvschool.atracao.output.GeradorArquivo;
 import com.mjvschool.atracao.repository.ContratoRepository;
@@ -45,7 +44,7 @@ public class AguaLuzAtracaoApp {
 		endereco.setBairro("Santo Antonio");
 		endereco.setCep("27310657");
 		endereco.setCidade("São Paulo");
-		endereco.setEstado(UnidadeFederacao.SAO_PAULO);
+		endereco.setUF("Sp");
 		endereco.setLogradouro("Rua das Cajazeiras 26");
 		endereco.setNumero("243");
 		endereco.setComplemento("Ap 210 Bl Centauro");
@@ -71,7 +70,7 @@ public class AguaLuzAtracaoApp {
 		endereco2.setBairro("Santo Antonio");
 		endereco2.setCep("27310657");
 		endereco2.setCidade("São Paulo");
-		endereco2.setEstado(UnidadeFederacao.SAO_PAULO);
+		endereco2.setUF("Sp");
 		endereco2.setLogradouro("Rua das Marias");
 		endereco2.setNumero("243");
 		endereco2.setComplemento("Ap 150 Bl Centauro");

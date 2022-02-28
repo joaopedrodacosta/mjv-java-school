@@ -7,10 +7,16 @@ public class Endereco {
 	private String complemento;
 	private String bairro;
 	private String cidade;
-	private UnidadeFederacao estado;
+	private String uf;
 	
 	public String getLogradouro() {
 		return logradouro;
+	}
+	public String getUF() {
+		return uf;
+	}
+	public void setUF (String uf) {
+		this.uf = uf;
 	}
 	public String getComplemento() {
 		return complemento;
@@ -45,11 +51,6 @@ public class Endereco {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public UnidadeFederacao getEstado() {
-		return estado;
-	}
-	public void setEstado(UnidadeFederacao estado) {
-		this.estado = estado;
-	}
+
 	
 }

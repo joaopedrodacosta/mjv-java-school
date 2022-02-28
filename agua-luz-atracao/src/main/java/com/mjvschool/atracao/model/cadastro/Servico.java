@@ -1,12 +1,25 @@
 package com.mjvschool.atracao.model.cadastro;
 
 public enum Servico {
-	AGUA("¡gua",137.21),
-	LUZ("Luz",132.15);
+	AGUA("√Ågua",137.21, "A"),
+	LUZ("Luz",132.15, "L");
 	
 	private String nome;
 	private Double valor;
+	private String siglaServico;
+
+	private Servico(String nome, Double valor, String siglaServico) {
+		this.nome = nome;
+		this.valor = valor;
+		this.siglaServico = siglaServico;
+	}
+
+
+	public String getSiglaServico() {
+		return siglaServico;
+	}
 	
+
 	private Servico(String nome, Double valor) {
 		this.nome = nome;
 		this.valor = valor;

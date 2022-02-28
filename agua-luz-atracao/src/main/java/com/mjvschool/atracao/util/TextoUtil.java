@@ -33,6 +33,12 @@ public class TextoUtil {
 
 	}
 
+	if(tipo.equalsIgnoreCase("uf")){
+		nomef.append(textoOriginal);
+		nomef.setLength(2);
+
+	}
+
 	
 	  return nomef.toString().toUpperCase();
 

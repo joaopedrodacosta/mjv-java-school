@@ -48,8 +48,10 @@ public class GeradorArquivo {
 			//numero
 			conteudo.append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento())).append("\n");
 			conteudo.append(TextoUtil.formatarNome("bairro", ct.getCadastro().getEndereco().getBairro())).append("\n");
-			conteudo.append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade())).append(ct.getCadastro().getEndereco().getEstado().sigla()).append("\n");
-			conteudo.append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
+			conteudo.append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade())).append(ct.getCadastro().getEndereco()).append("\n");
+			conteudo.append(TextoUtil.formatarNome("uf", ct.getCadastro().getEndereco().getUF()));
+			conteudo.append(FormatUtil.formatarCelular(ct.getCadastro().getCelular())).append("\n");
+			conteudo.append(ct.getServico().getSiglaServico()).append("\n");
 			
 			conteudo.append("\n");
 		}
