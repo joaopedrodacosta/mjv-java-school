@@ -86,7 +86,7 @@ public class FormatUtil {
         return valor;
 
 }
-    /*
+    
     public static String formatarNumEndereco(String numero){
       
 
@@ -94,7 +94,7 @@ public class FormatUtil {
         return formatado;
     
     }
-    */
+    
 
     
 

@@ -16,7 +16,20 @@ public class GeradorArquivo {
 	public void gerarArquivoCsv(List<Contrato> contratos) {
 		StringBuilder conteudo =new StringBuilder();
 		for(Contrato ct: contratos) {
-			conteudo.append(ct.getCadastro().getNome().concat(";").concat(ct.getCadastro().getCpf()));
+			conteudo.append(ct.getCadastro().getNome());
+			conteudo.append(";").append(ct.getCadastro().getCpf());
+			conteudo.append(";").append(ct.getCadastro().getCelular());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getLogradouro());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getNumero());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getComplemento());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getBairro());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getCidade());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getUF());
+			conteudo.append(";").append(ct.getCadastro().getEndereco().getCep());
+			conteudo.append(";").append(ct.getNumeroProtocolo());
+			conteudo.append(";").append(ct.getDataHora());
+			conteudo.append(";").append(ct.getServico().getSiglaServico());
+			conteudo.append(";").append(ct.getServico().getValor());
 			conteudo.append("\n");
 		}
 		
@@ -39,23 +52,21 @@ public class GeradorArquivo {
 		StringBuilder conteudo =new StringBuilder();
 		
 		for(Contrato ct: contratos) {
-			conteudo.append("CPF: ").append(FormatUtil.formatarCpf(ct.getCadastro().getCpf())).append("\n");
-			conteudo.append("NOME: ").append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome())).append("\n");
-			conteudo.append("CEL: ").append(FormatUtil.formatarCelular(ct.getCadastro().getCelular())).append("\n");
-			conteudo.append("LOGRADOURO: ").append(TextoUtil.formatarNome("logradouro", ct.getCadastro().getEndereco().getLogradouro())).append("\n");
-			//conteudo.append("NUMERO: ").append(FormatUtil.formatarNumEndereco(ct.getCadastro().getEndereco().getNumero())).append("\n");
-			conteudo.append("COMPLEMENTO: ").append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento())).append("\n");
-			conteudo.append("BAIRRO: ").append(TextoUtil.formatarNome("bairro", ct.getCadastro().getEndereco().getBairro())).append("\n");
-			conteudo.append("CIDADE: ").append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade())).append("\n");
-			conteudo.append("UF: ").append(TextoUtil.formatarNome("uf", ct.getCadastro().getEndereco().getUF())).append("\n");
-			conteudo.append("CEP: ").append(FormatUtil.formatarCep(ct.getCadastro().getEndereco().getCep())).append("\n");
-			conteudo.append("PROTOCOLO: ").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo())).append("\n");
-			conteudo.append("DATA/HORA: ").append(FormatUtil.formatarDataHora(ct.getDataHora())).append("\n");
-			conteudo.append("SERVIÇO: ").append(ct.getServico().getSiglaServico()).append("\n");
-			conteudo.append("VALOR: ").append(FormatUtil.formatarValor(ct.getServico().getValor())).append("\n");
+			conteudo.append("NOME:").append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome()));
+			conteudo.append(" CPF:").append(FormatUtil.formatarCpf(ct.getCadastro().getCpf()));
+			conteudo.append(" CEL:").append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
+			conteudo.append(" LOGRADOURO:").append(TextoUtil.formatarNome("logradouro", ct.getCadastro().getEndereco().getLogradouro()));
+			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(ct.getCadastro().getEndereco().getNumero()));
+			conteudo.append(" COMPLEMENTO:").append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento()));
+			conteudo.append(" BAIRRO:").append(TextoUtil.formatarNome("bairro", ct.getCadastro().getEndereco().getBairro()));
+			conteudo.append(" CIDADE:").append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade()));
+			conteudo.append(" UF:").append(TextoUtil.formatarNome("uf", ct.getCadastro().getEndereco().getUF()));
+			conteudo.append(" CEP:").append(FormatUtil.formatarCep(ct.getCadastro().getEndereco().getCep()));
+			conteudo.append(" PROTOCOLO:").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
+			conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora()));
+			conteudo.append(" SERVIÇO:").append(ct.getServico().getSiglaServico());
+			conteudo.append(" VALOR:").append(FormatUtil.formatarValor(ct.getServico().getValor())).append("\n");
 			conteudo.append("-------------------------------------------------------------");
-
-			
 			conteudo.append("\n");
 		}
 		
