@@ -4,6 +4,8 @@ package com.mjvschool.atracao.util;
 
 public class TextoUtil {
 	public static String formatarNome(String tipo, String textoOriginal) {
+
+		//alterar uso do stringbuilder -- Testar substring
 		StringBuilder nomef = new StringBuilder();
 
 		if(tipo.equalsIgnoreCase("nome")){
@@ -39,7 +41,7 @@ public class TextoUtil {
 
 	}
 
-	
+	  // criar metodo de uppercase
 	  return nomef.toString().toUpperCase();
 
   }

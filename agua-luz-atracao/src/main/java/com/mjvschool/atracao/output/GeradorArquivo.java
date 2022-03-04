@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
+
+import com.mjvschool.atracao.model.cadastro.Endereco;
+import com.mjvschool.atracao.model.cadastro.Pessoa;
 import com.mjvschool.atracao.model.contrato.Contrato;
 import com.mjvschool.atracao.util.FormatUtil;
 import com.mjvschool.atracao.util.TextoUtil;
@@ -52,9 +55,11 @@ public class GeradorArquivo {
 		StringBuilder conteudo =new StringBuilder();
 		
 		for(Contrato ct: contratos) {
+			Pessoa pessoa = ct.getCadastro(); 
 			conteudo.append("NOME:").append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome()));
 			conteudo.append(" CPF:").append(FormatUtil.formatarCpf(ct.getCadastro().getCpf()));
 			conteudo.append(" CEL:").append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
+			Endereco endereco = pessoa.getEndereco();
 			conteudo.append(" LOGRADOURO:").append(TextoUtil.formatarNome("logradouro", ct.getCadastro().getEndereco().getLogradouro()));
 			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(ct.getCadastro().getEndereco().getNumero()));
 			conteudo.append(" COMPLEMENTO:").append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento()));

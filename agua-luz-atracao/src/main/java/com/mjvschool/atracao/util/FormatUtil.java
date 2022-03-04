@@ -34,8 +34,8 @@ public class FormatUtil {
     }   
 
     public static String formatarCpf(String numero) throws ParseException {
- 
-        numero=numero.replaceAll("\\D", ""); //Removo todos os caracteres não-numéricos
+
+        numero=numero.replaceAll("\\D", ""); //Remove todos os caracteres não-numéricos
         String mascara="";
 
         mascara="###########"; 
@@ -53,7 +53,7 @@ public class FormatUtil {
 
     public static String formatarCep(String numero) throws ParseException {
  
-        numero=numero.replaceAll("\\D", ""); //Removo todos os caracteres não-numéricos
+        numero=numero.replaceAll("\\D", ""); //Remove todos os caracteres não-numéricos
         String mascara="";
 
         mascara="########"; 
@@ -68,7 +68,7 @@ public class FormatUtil {
 		return "Inválido";
 	}
 }
-    //pensar em uma solucão add zeros a esquerda caso o número for menor que a máscara
+    
     public static String formatarProtoc(long numero) {
 
             DecimalFormat df = new DecimalFormat("0000000000");
