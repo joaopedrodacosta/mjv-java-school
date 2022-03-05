@@ -3,52 +3,35 @@ package com.mjvschool.atracao.util;
 
 
 public class TextoUtil {
-	public static String formatarNome(String tipo, String textoOriginal) {
+
+	public static String limitarTamanho(String textoOriginal, int tamanho) {
 
 		//alterar uso do stringbuilder -- Testar substring
-		StringBuilder nomef = new StringBuilder();
-
-		if(tipo.equalsIgnoreCase("nome")){
-		nomef.append(textoOriginal);
-		nomef.setLength(30);
-		}
-		
-		if(tipo.equalsIgnoreCase("logradouro")){
-		nomef.append(textoOriginal);
-		nomef.setLength(20);
+		return textoOriginal.substring(0, tamanho);
 		
 	}
-		if(tipo.equalsIgnoreCase("complemento")){
-		nomef.append(textoOriginal);
-		nomef.setLength(10);
-	}
 
-	if(tipo.equalsIgnoreCase("bairro")){
-		nomef.append(textoOriginal);
-		nomef.setLength(15);
+	public static String caixaAlta(String textoOriginal){
+		return textoOriginal.toUpperCase();
+	
 
 	}
 
-	if(tipo.equalsIgnoreCase("cidade")){
-		nomef.append(textoOriginal);
-		nomef.setLength(30);
+	public static String retirarCaracteresNum(String textoOriginal){
+		return textoOriginal.replaceAll("\\D", "");
+		
 
 	}
-
-	if(tipo.equalsIgnoreCase("uf")){
-		nomef.append(textoOriginal);
-		nomef.setLength(2);
-
-	}
-
-	  // criar metodo de uppercase
-	  return nomef.toString().toUpperCase();
-
-  }
+	
 }
-
-	
-	
+	/*
+	public String limitaString(String testes, int tamanho){        
+        if(testes != null && testes.length() > tamanho){            
+            return testes.substring(0, tamanho+1) + "...";
+        } else {
+            return testes;
+        }        
+    }
 	/*
 	public static String ajustar(String textoOriginal, int tamanhoMaximo) {
 		String novaString = preencher(textoOriginal, tamanhoMaximo);

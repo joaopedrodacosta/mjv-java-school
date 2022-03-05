@@ -55,19 +55,57 @@ public class GeradorArquivo {
 		StringBuilder conteudo =new StringBuilder();
 		
 		for(Contrato ct: contratos) {
+
 			Pessoa pessoa = ct.getCadastro(); 
-			conteudo.append("NOME:").append(TextoUtil.formatarNome("nome", ct.getCadastro().getNome()));
-			conteudo.append(" CPF:").append(FormatUtil.formatarCpf(ct.getCadastro().getCpf()));
-			conteudo.append(" CEL:").append(FormatUtil.formatarCelular(ct.getCadastro().getCelular()));
+
+			if(pessoa.getNome() != null && pessoa.getNome().length() > 30){            
+				conteudo.append("NOME:").append(TextoUtil.limitarTamanho(pessoa.getNome(), 30).toUpperCase());
+			} else {
+				conteudo.append("NOME:").append(String.format("%-30s", pessoa.getNome()));
+			}        
+			
+			conteudo.append(" CPF:").append(FormatUtil.formatarCpf(pessoa.getCpf()));
+			conteudo.append(" CEL:").append(FormatUtil.formatarCelular(pessoa.getCelular()));
+
 			Endereco endereco = pessoa.getEndereco();
-			conteudo.append(" LOGRADOURO:").append(TextoUtil.formatarNome("logradouro", ct.getCadastro().getEndereco().getLogradouro()));
-			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(ct.getCadastro().getEndereco().getNumero()));
-			conteudo.append(" COMPLEMENTO:").append(TextoUtil.formatarNome("complemento", ct.getCadastro().getEndereco().getComplemento()));
-			conteudo.append(" BAIRRO:").append(TextoUtil.formatarNome("bairro", ct.getCadastro().getEndereco().getBairro()));
-			conteudo.append(" CIDADE:").append(TextoUtil.formatarNome("cidade", ct.getCadastro().getEndereco().getCidade()));
-			conteudo.append(" UF:").append(TextoUtil.formatarNome("uf", ct.getCadastro().getEndereco().getUF()));
+
+			if(endereco.getLogradouro() != null && endereco.getLogradouro().length() > 20){            
+				conteudo.append(" LOGRADOURO:").append(TextoUtil.limitarTamanho(endereco.getLogradouro(), 20).toUpperCase());
+			} else {
+				conteudo.append(" LOGRADOURO:").append(String.format("%-20s", endereco.getLogradouro()));
+			}    
+			
+			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(endereco.getNumero()));
+
+			if(endereco.getComplemento() != null && endereco.getComplemento().length() > 10){            
+				conteudo.append(" COMPLEMENTO:").append(TextoUtil.limitarTamanho(endereco.getComplemento(), 10).toUpperCase());
+			} else {
+				conteudo.append(" COMPLEMENTO:").append(String.format("%-10s", endereco.getComplemento()));
+			}  
+			
+			if(endereco.getBairro() != null && endereco.getBairro().length() > 15){            
+				conteudo.append(" BAIRRO:").append(TextoUtil.limitarTamanho(endereco.getBairro(), 15).toUpperCase());
+			} else {
+				conteudo.append(" BAIRRO:").append(String.format("%-15s", endereco.getBairro()));
+			}  
+			
+			if(endereco.getCidade() != null && endereco.getCidade().length() > 30){            
+				conteudo.append(" CIDADE:").append(TextoUtil.limitarTamanho(endereco.getCidade(), 30).toUpperCase());
+			} else {
+				conteudo.append(" CIDADE:").append(String.format("%-30s", endereco.getCidade()));
+			}  
+			
+			if(endereco.getUF() != null && endereco.getUF().length() > 2){            
+				conteudo.append(" UF:").append(TextoUtil.limitarTamanho(endereco.getUF(), 2).toUpperCase());
+			} else {
+				conteudo.append(" UF:").append(String.format("%-2s", endereco.getUF()));
+			}  
+			
+			
 			conteudo.append(" CEP:").append(FormatUtil.formatarCep(ct.getCadastro().getEndereco().getCep()));
 			conteudo.append(" PROTOCOLO:").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
+
+
 			conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora()));
 			conteudo.append(" SERVIÇO:").append(ct.getServico().getSiglaServico());
 			conteudo.append(" VALOR:").append(FormatUtil.formatarValor(ct.getServico().getValor())).append("\n");
