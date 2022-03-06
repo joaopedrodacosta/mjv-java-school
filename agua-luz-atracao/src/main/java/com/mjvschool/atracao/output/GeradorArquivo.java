@@ -58,55 +58,38 @@ public class GeradorArquivo {
 
 			Pessoa pessoa = ct.getCadastro(); 
 
-			if(pessoa.getNome() != null && pessoa.getNome().length() > 30){            
-				conteudo.append("NOME:").append(TextoUtil.limitarTamanho(pessoa.getNome(), 30).toUpperCase());
-			} else {
-				conteudo.append("NOME:").append(String.format("%-30s", pessoa.getNome()));
-			}        
+	         
+			conteudo.append("NOME:").append(TextoUtil.ajustar(pessoa.getNome(), 30).toUpperCase());
+			    
 			
-			conteudo.append(" CPF:").append(FormatUtil.formatarCpf(pessoa.getCpf()));
-			conteudo.append(" CEL:").append(FormatUtil.formatarCelular(pessoa.getCelular()));
+			conteudo.append(" CPF:").append(TextoUtil.retirarCaracteresEspeciais(pessoa.getCpf()));
+			conteudo.append(" CEL:").append(TextoUtil.retirarCaracteresEspeciais(pessoa.getCelular()));
 
 			Endereco endereco = pessoa.getEndereco();
 
-			if(endereco.getLogradouro() != null && endereco.getLogradouro().length() > 20){            
-				conteudo.append(" LOGRADOURO:").append(TextoUtil.limitarTamanho(endereco.getLogradouro(), 20).toUpperCase());
-			} else {
-				conteudo.append(" LOGRADOURO:").append(String.format("%-20s", endereco.getLogradouro()));
-			}    
-			
+		        
+			conteudo.append(" LOGRADOURO:").append(TextoUtil.ajustar(endereco.getLogradouro(), 20).toUpperCase());
 			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(endereco.getNumero()));
-
-			if(endereco.getComplemento() != null && endereco.getComplemento().length() > 10){            
-				conteudo.append(" COMPLEMENTO:").append(TextoUtil.limitarTamanho(endereco.getComplemento(), 10).toUpperCase());
-			} else {
-				conteudo.append(" COMPLEMENTO:").append(String.format("%-10s", endereco.getComplemento()));
-			}  
-			
-			if(endereco.getBairro() != null && endereco.getBairro().length() > 15){            
-				conteudo.append(" BAIRRO:").append(TextoUtil.limitarTamanho(endereco.getBairro(), 15).toUpperCase());
-			} else {
-				conteudo.append(" BAIRRO:").append(String.format("%-15s", endereco.getBairro()));
-			}  
-			
-			if(endereco.getCidade() != null && endereco.getCidade().length() > 30){            
-				conteudo.append(" CIDADE:").append(TextoUtil.limitarTamanho(endereco.getCidade(), 30).toUpperCase());
-			} else {
-				conteudo.append(" CIDADE:").append(String.format("%-30s", endereco.getCidade()));
-			}  
-			
-			if(endereco.getUF() != null && endereco.getUF().length() > 2){            
-				conteudo.append(" UF:").append(TextoUtil.limitarTamanho(endereco.getUF(), 2).toUpperCase());
-			} else {
-				conteudo.append(" UF:").append(String.format("%-2s", endereco.getUF()));
-			}  
-			
-			
-			conteudo.append(" CEP:").append(FormatUtil.formatarCep(ct.getCadastro().getEndereco().getCep()));
+			conteudo.append(" COMPLEMENTO:").append(TextoUtil.ajustar(endereco.getComplemento(), 10).toUpperCase()); 
+			conteudo.append(" BAIRRO:").append(TextoUtil.ajustar(endereco.getBairro(), 15).toUpperCase());   
+			conteudo.append(" CIDADE:").append(TextoUtil.ajustar(endereco.getCidade(), 30).toUpperCase()); 
+			conteudo.append(" UF:").append(TextoUtil.ajustar(endereco.getUF(), 2).toUpperCase());
+			conteudo.append(" CEP:").append(TextoUtil.retirarCaracteresEspeciais(ct.getCadastro().getEndereco().getCep()));
 			conteudo.append(" PROTOCOLO:").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
 
+			
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Brasil")){
+				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "HHmm ddMMyyyy   "));
+			}
 
-			conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora()));
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Peru")){
+				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "HHmm ddMMyyyy   "));
+			}
+
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Estados Unidos")){
+				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "yyyyMMdd hhmm a"));
+			}
+			
 			conteudo.append(" SERVIÇO:").append(ct.getServico().getSiglaServico());
 			conteudo.append(" VALOR:").append(FormatUtil.formatarValor(ct.getServico().getValor())).append("\n");
 			conteudo.append("-------------------------------------------------------------");

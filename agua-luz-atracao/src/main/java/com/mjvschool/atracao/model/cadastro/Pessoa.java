@@ -7,6 +7,7 @@ public class Pessoa {
 	private String celular;
 	private Endereco endereco;
 	private Pais pais;
+	
 	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
