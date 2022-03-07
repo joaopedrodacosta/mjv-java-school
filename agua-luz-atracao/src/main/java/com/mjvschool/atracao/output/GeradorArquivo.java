@@ -2,7 +2,6 @@ package com.mjvschool.atracao.output;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,6 +33,7 @@ public class GeradorArquivo {
 			conteudo.append(";").append(ct.getDataHora());
 			conteudo.append(";").append(ct.getServico().getSiglaServico());
 			conteudo.append(";").append(ct.getServico().getValor());
+			conteudo.append(";").append(ct.getNotiTipo().getNome());
 			conteudo.append("\n");
 		}
 		
@@ -60,23 +60,22 @@ public class GeradorArquivo {
 			Pessoa pessoa = ct.getCadastro(); 
 			Endereco endereco = pessoa.getEndereco();
 	         
-			conteudo.append(TextoUtil.ajustar(pessoa.getNome(), 30).toUpperCase()).append(" ");
-			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCpf()), 11)).append(" ");
-			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCelular()), 11)).append(" ");
-			conteudo.append(TextoUtil.ajustar(endereco.getLogradouro(), 20).toUpperCase()).append(" ");
-			conteudo.append(FormatUtil.formatarNumEndereco(endereco.getNumero())).append(" ");
-			conteudo.append(TextoUtil.ajustar(endereco.getComplemento(), 10).toUpperCase()).append(" "); 
-			conteudo.append(TextoUtil.ajustar(endereco.getBairro(), 15).toUpperCase()).append(" ");   
-			conteudo.append(TextoUtil.ajustar(endereco.getCidade(), 30).toUpperCase()).append(" "); 
+			conteudo.append(TextoUtil.ajustar(pessoa.getNome(), 30).toUpperCase());
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCpf()), 11));
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCelular()), 11));
+			conteudo.append(TextoUtil.ajustar(endereco.getLogradouro(), 20).toUpperCase());
+			conteudo.append(FormatUtil.formatarNumEndereco(endereco.getNumero()));
+			conteudo.append(TextoUtil.ajustar(endereco.getComplemento(), 10).toUpperCase()); 
+			conteudo.append(TextoUtil.ajustar(endereco.getBairro(), 15).toUpperCase());   
+			conteudo.append(TextoUtil.ajustar(endereco.getCidade(), 30).toUpperCase()); 
 			conteudo.append(TextoUtil.ajustar(endereco.getUF(), 2).toUpperCase()).append(" ");
-			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(endereco.getCep()), 8)).append(" ");
-			conteudo.append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo())).append(" ");
-			conteudo.append(FormatUtil.formatarDataHora(ct.getDataHora(), "ddMMyyyy HHmm")).append(" ");
-			conteudo.append(ct.getServico().getSiglaServico()).append(" ");
-			conteudo.append(TextoUtil.retirarCaracteresEspeciais(FormatUtil.formatarValor(ct.getServico().getValor(), "000000.##"))).append(" ");
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(endereco.getCep()), 8));
+			conteudo.append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
+			conteudo.append(FormatUtil.formatarDataHora(ct.getDataHora(), "ddMMyyyy HHmm"));
+			conteudo.append(ct.getServico().getSiglaServico());
+			conteudo.append(TextoUtil.retirarCaracteresEspeciais(FormatUtil.formatarValor(ct.getServico().getValor(), "000000.##")));
 			conteudo.append(ct.getNotiTipo().getSiglaNotificacao()).append("\n");
-			conteudo.append("-------------------------------------------------------------");
-			conteudo.append("\n");
+			
 		}
 		
 		System.out.println(conteudo.toString());
@@ -124,11 +123,11 @@ public class GeradorArquivo {
 
 			//gerando a mensagem
 			conteudo.append("Senhor(a) ").append((pessoa.getNome())).append(" cpf de número ").append((pessoa.getCpf()));
-			conteudo.append(", Informamos que conforme contrato com protocolo de número ").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
+			conteudo.append(", Informamos que conforme contrato com protocolo de número ").append(ct.getNumeroProtocolo());
 			conteudo.append(" está agendado para a data ").append(FormatUtil.formatarDataHora(ct.getDataHora(), dataHoraMasc));
 			conteudo.append(" a instalação do serviço de ").append(ct.getServico().getNome()).append(" com taxa de valor R$ ");
 			conteudo.append(FormatUtil.formatarValor(ct.getServico().getValor(), valorMasc)).append("em sua residência localizada no endereço abaixo:").append("\n");
-			conteudo.append("Logradouro: ").append((endereco.getLogradouro())).append(" , ").append(endereco.getNumero()).append("\n");
+			conteudo.append("Logradouro: ").append(endereco.getLogradouro()).append(", ").append(endereco.getNumero()).append("\n");
 			conteudo.append("Complemento: ").append((endereco.getComplemento())).append("\n");
 			conteudo.append("Bairro: ").append(endereco.getBairro()).append("\n");
 			conteudo.append("Cidade: ").append(endereco.getCidade()).append("/").append(endereco.getUF()).append("\n");
@@ -138,7 +137,7 @@ public class GeradorArquivo {
 		File output = new File("C:\\estudo\\mjv-java-school\\agua-luz-output");
 		if(!output.exists())
 			output.mkdirs();
-			
+
 		//criando arquivos de acordo com o número dos protocolos 
 		Path path = Paths.get("C:\\estudo\\mjv-java-school\\agua-luz-output\\contrato-" + ct.getNumeroProtocolo() + ".txt");
 

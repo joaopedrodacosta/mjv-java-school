@@ -5,7 +5,7 @@ package com.mjvschool.atracao.util;
 public class TextoUtil {
 
 	
-
+	//retira os caracteres não númericos e especiais
 	public static String retirarCaracteresEspeciais(String textoOriginal){
 		return textoOriginal.replaceAll("\\D+", "");
 		
