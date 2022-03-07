@@ -15,6 +15,7 @@ public class FormatUtil {
         
 	}
 
+    //subistitiu os zeros pelos números passados, se o número for menor que a máscara os zeros a esquerda sobrando permanecem
     public static String formatarProtoc(long numero) {
 
             DecimalFormat df = new DecimalFormat("0000000000");
@@ -23,15 +24,16 @@ public class FormatUtil {
 
     }
 
+    //formata o valor de acordo com a máscara
     public static String formatarValor(double numero, String mascara) {
 
-        
         DecimalFormat df = new DecimalFormat(mascara);
         String valor = df.format(numero); 
         return valor;
 
 }
     
+    //formata o numero preenchendo até 6 zeros a esquerda
     public static String formatarNumEndereco(String numero){
       
 

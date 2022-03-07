@@ -122,7 +122,7 @@ public class GeradorArquivo {
 				 valorMasc = "######.##";
 			}
 
-
+			//gerando a mensagem
 			conteudo.append("Senhor(a) ").append((pessoa.getNome())).append(" cpf de número ").append((pessoa.getCpf()));
 			conteudo.append(", Informamos que conforme contrato com protocolo de número ").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
 			conteudo.append(" está agendado para a data ").append(FormatUtil.formatarDataHora(ct.getDataHora(), dataHoraMasc));
@@ -138,7 +138,8 @@ public class GeradorArquivo {
 		File output = new File("C:\\estudo\\mjv-java-school\\agua-luz-output");
 		if(!output.exists())
 			output.mkdirs();
-		
+			
+		//criando arquivos de acordo com o número dos protocolos 
 		Path path = Paths.get("C:\\estudo\\mjv-java-school\\agua-luz-output\\contrato-" + ct.getNumeroProtocolo() + ".txt");
 
 		try {
