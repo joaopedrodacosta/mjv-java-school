@@ -23,12 +23,11 @@ public class FormatUtil {
 
     }
 
-    public static String formatarValor(double numero) {
+    public static String formatarValor(double numero, String mascara) {
 
         
-        DecimalFormat df = new DecimalFormat("000000.##");
+        DecimalFormat df = new DecimalFormat(mascara);
         String valor = df.format(numero); 
-        valor = valor.replaceAll("\\D+","");
         return valor;
 
 }
@@ -40,6 +39,8 @@ public class FormatUtil {
         return formatado;
     
     }
+
+    
     
 
     

@@ -20,10 +20,6 @@ public enum Servico {
 	}
 	
 
-	private Servico(String nome, Double valor) {
-		this.nome = nome;
-		this.valor = valor;
-	}
 
 	public String getNome() {
 		return nome;

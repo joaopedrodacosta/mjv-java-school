@@ -2,6 +2,7 @@ package com.mjvschool.atracao.output;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -57,41 +58,23 @@ public class GeradorArquivo {
 		for(Contrato ct: contratos) {
 
 			Pessoa pessoa = ct.getCadastro(); 
-
-	         
-			conteudo.append("NOME:").append(TextoUtil.ajustar(pessoa.getNome(), 30).toUpperCase());
-			    
-			
-			conteudo.append(" CPF:").append(TextoUtil.retirarCaracteresEspeciais(pessoa.getCpf()));
-			conteudo.append(" CEL:").append(TextoUtil.retirarCaracteresEspeciais(pessoa.getCelular()));
-
 			Endereco endereco = pessoa.getEndereco();
-
-		        
-			conteudo.append(" LOGRADOURO:").append(TextoUtil.ajustar(endereco.getLogradouro(), 20).toUpperCase());
-			conteudo.append(" NUMERO:").append(FormatUtil.formatarNumEndereco(endereco.getNumero()));
-			conteudo.append(" COMPLEMENTO:").append(TextoUtil.ajustar(endereco.getComplemento(), 10).toUpperCase()); 
-			conteudo.append(" BAIRRO:").append(TextoUtil.ajustar(endereco.getBairro(), 15).toUpperCase());   
-			conteudo.append(" CIDADE:").append(TextoUtil.ajustar(endereco.getCidade(), 30).toUpperCase()); 
-			conteudo.append(" UF:").append(TextoUtil.ajustar(endereco.getUF(), 2).toUpperCase());
-			conteudo.append(" CEP:").append(TextoUtil.retirarCaracteresEspeciais(ct.getCadastro().getEndereco().getCep()));
-			conteudo.append(" PROTOCOLO:").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
-
-			
-			if(pessoa.getPais().getNome().equalsIgnoreCase("Brasil")){
-				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "HHmm ddMMyyyy   "));
-			}
-
-			if(pessoa.getPais().getNome().equalsIgnoreCase("Peru")){
-				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "HHmm ddMMyyyy   "));
-			}
-
-			if(pessoa.getPais().getNome().equalsIgnoreCase("Estados Unidos")){
-				conteudo.append(" DATA/HORA:").append(FormatUtil.formatarDataHora(ct.getDataHora(), "yyyyMMdd hhmm a"));
-			}
-			
-			conteudo.append(" SERVIÇO:").append(ct.getServico().getSiglaServico());
-			conteudo.append(" VALOR:").append(FormatUtil.formatarValor(ct.getServico().getValor())).append("\n");
+	         
+			conteudo.append(TextoUtil.ajustar(pessoa.getNome(), 30).toUpperCase()).append(" ");
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCpf()), 11)).append(" ");
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(pessoa.getCelular()), 11)).append(" ");
+			conteudo.append(TextoUtil.ajustar(endereco.getLogradouro(), 20).toUpperCase()).append(" ");
+			conteudo.append(FormatUtil.formatarNumEndereco(endereco.getNumero())).append(" ");
+			conteudo.append(TextoUtil.ajustar(endereco.getComplemento(), 10).toUpperCase()).append(" "); 
+			conteudo.append(TextoUtil.ajustar(endereco.getBairro(), 15).toUpperCase()).append(" ");   
+			conteudo.append(TextoUtil.ajustar(endereco.getCidade(), 30).toUpperCase()).append(" "); 
+			conteudo.append(TextoUtil.ajustar(endereco.getUF(), 2).toUpperCase()).append(" ");
+			conteudo.append(TextoUtil.ajustar(TextoUtil.retirarCaracteresEspeciais(endereco.getCep()), 8)).append(" ");
+			conteudo.append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo())).append(" ");
+			conteudo.append(FormatUtil.formatarDataHora(ct.getDataHora(), "ddMMyyyy HHmm")).append(" ");
+			conteudo.append(ct.getServico().getSiglaServico()).append(" ");
+			conteudo.append(TextoUtil.retirarCaracteresEspeciais(FormatUtil.formatarValor(ct.getServico().getValor(), "000000.##"))).append(" ");
+			conteudo.append(ct.getNotiTipo().getSiglaNotificacao()).append("\n");
 			conteudo.append("-------------------------------------------------------------");
 			conteudo.append("\n");
 		}
@@ -110,5 +93,60 @@ public class GeradorArquivo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+
+	public void gerarArquivoContrato(List<Contrato> contratos) throws ParseException {
+		
+		
+		for(Contrato ct: contratos) {
+
+			StringBuilder conteudo =new StringBuilder();
+			String dataHoraMasc = "";
+			String valorMasc = "";
+			Pessoa pessoa = ct.getCadastro();
+			Endereco endereco = pessoa.getEndereco(); 
+
+			//adicionando máscaras de formatação de acordo com o país
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Brasil")){
+				dataHoraMasc = "dd/MM/yyyy HH:mm ";
+				valorMasc = "######,##";
+			}
+
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Peru")){
+				 dataHoraMasc = "dd/MM/yyyy HH:mm";
+				 valorMasc = "######,##";
+			}
+			if(pessoa.getPais().getNome().equalsIgnoreCase("Estados Unidos")){
+				 dataHoraMasc = "yyyy/MM/dd hh:mm a";
+				 valorMasc = "######.##";
+			}
+
+
+			conteudo.append("Senhor(a) ").append((pessoa.getNome())).append(" cpf de número ").append((pessoa.getCpf()));
+			conteudo.append(", Informamos que conforme contrato com protocolo de número ").append(FormatUtil.formatarProtoc(ct.getNumeroProtocolo()));
+			conteudo.append(" está agendado para a data ").append(FormatUtil.formatarDataHora(ct.getDataHora(), dataHoraMasc));
+			conteudo.append(" a instalação do serviço de ").append(ct.getServico().getNome()).append(" com taxa de valor R$ ");
+			conteudo.append(FormatUtil.formatarValor(ct.getServico().getValor(), valorMasc)).append("em sua residência localizada no endereço abaixo:").append("\n");
+			conteudo.append("Logradouro: ").append((endereco.getLogradouro())).append(" , ").append(endereco.getNumero()).append("\n");
+			conteudo.append("Complemento: ").append((endereco.getComplemento())).append("\n");
+			conteudo.append("Bairro: ").append(endereco.getBairro()).append("\n");
+			conteudo.append("Cidade: ").append(endereco.getCidade()).append("/").append(endereco.getUF()).append("\n");
+			conteudo.append("Cep: ").append(endereco.getCep());
+
+		
+		File output = new File("C:\\estudo\\mjv-java-school\\agua-luz-output");
+		if(!output.exists())
+			output.mkdirs();
+		
+		Path path = Paths.get("C:\\estudo\\mjv-java-school\\agua-luz-output\\contrato-" + ct.getNumeroProtocolo() + ".txt");
+
+		try {
+			Files.write(path, conteudo.toString().getBytes(StandardCharsets.UTF_8));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	}
 }

@@ -3,6 +3,7 @@ package com.mjvschool.atracao.model.contrato;
 
 import java.time.LocalDateTime;
 
+import com.mjvschool.atracao.model.cadastro.NotificacaoTipo;
 import com.mjvschool.atracao.model.cadastro.Pessoa;
 import com.mjvschool.atracao.model.cadastro.Servico;
 
@@ -12,9 +13,18 @@ public class Contrato {
 	private Pessoa cadastro;
 	private LocalDateTime dataHora;
 	private Servico servico;
+	private NotificacaoTipo notiTipo;
 
 	public void setDataHora(LocalDateTime dataHora) {
 		this.dataHora = dataHora;
+	}
+
+	public NotificacaoTipo getNotiTipo() {
+		return notiTipo;
+	}
+
+	public void setNotiTipo(NotificacaoTipo notiTipo) {
+		this.notiTipo = notiTipo;
 	}
 
 	public LocalDateTime getDataHora() {

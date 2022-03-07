@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.mjvschool.atracao.model.cadastro.Endereco;
+import com.mjvschool.atracao.model.cadastro.NotificacaoTipo;
 import com.mjvschool.atracao.model.cadastro.Pais;
 import com.mjvschool.atracao.model.cadastro.Pessoa;
 import com.mjvschool.atracao.model.cadastro.Servico;
@@ -24,6 +25,7 @@ public class AguaLuzAtracaoApp {
 		GeradorArquivo gerador = new GeradorArquivo();
 		gerador.gerarArquivoCsv(contratos);
 		gerador.gerarArquivoTxt(contratos);
+		gerador.gerarArquivoContrato(contratos);
 		
 	}
 	private static void faseAtracao() {
@@ -42,7 +44,7 @@ public class AguaLuzAtracaoApp {
 		
 		Endereco endereco = new Endereco();
 		endereco.setBairro("Santo Antonio");
-		endereco.setCep("27310657");
+		endereco.setCep("27.310.657");
 		endereco.setCidade("São Paulo");
 		endereco.setUF("Sp");
 		endereco.setLogradouro("Rua das Cajazeiras 26");
@@ -51,7 +53,7 @@ public class AguaLuzAtracaoApp {
 		pessoa.setEndereco(endereco);
 		contrato1.setCadastro(pessoa);
 		contrato1.setDataHora(LocalDateTime.now());
-		
+		contrato1.setNotiTipo(NotificacaoTipo.SMS);
 		contratoRepositorio.gravar(contrato1);
 		
 		Contrato contrato2 = new Contrato();
@@ -68,7 +70,7 @@ public class AguaLuzAtracaoApp {
 		
 		Endereco endereco2 = new Endereco();
 		endereco2.setBairro("Santo Antonio");
-		endereco2.setCep("27310657");
+		endereco2.setCep("27.310.657");
 		endereco2.setCidade("São Paulo");
 		endereco2.setUF("Sp");
 		endereco2.setLogradouro("Rua das Marias");
@@ -77,6 +79,7 @@ public class AguaLuzAtracaoApp {
 		pessoa2.setEndereco(endereco2);
 		contrato2.setCadastro(pessoa2);
 		contrato2.setDataHora(LocalDateTime.now());
+		contrato2.setNotiTipo(NotificacaoTipo.WHATS);
 		
 		contratoRepositorio.gravar(contrato2);
 	}

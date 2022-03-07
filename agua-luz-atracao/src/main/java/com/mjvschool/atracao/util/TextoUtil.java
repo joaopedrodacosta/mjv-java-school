@@ -13,7 +13,7 @@ public class TextoUtil {
 	}
 
 	public static String retirarCaracteresEspeciais(String textoOriginal){
-		return textoOriginal.replaceAll("\\D", "");
+		return textoOriginal.replaceAll("\\D+", "");
 		
 
 	}
@@ -35,20 +35,4 @@ public class TextoUtil {
 	}
 	
 }
-	/*
-	public String limitaString(String testes, int tamanho){        
-        if(testes != null && testes.length() > tamanho){            
-            return testes.substring(0, tamanho+1) + "...";
-        } else {
-            return testes;
-        }        
-    }
-	/*
-	public static String limitarTamanho(String textoOriginal, int tamanho) {
-
-		//alterar uso do stringbuilder -- Testar substring
-		return textoOriginal.substring(0, tamanho);
-		
-	}
-	*/
 
