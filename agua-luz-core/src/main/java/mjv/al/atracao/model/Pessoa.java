@@ -1,4 +1,4 @@
-package com.mjvschool.atracao.model.cadastro;
+package mjv.al.atracao.model;
 
 public class Pessoa {
 	private String nome;
@@ -7,7 +7,6 @@ public class Pessoa {
 	private String celular;
 	private Endereco endereco;
 	private Pais pais;
-	
 	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
@@ -45,5 +44,11 @@ public class Pessoa {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+	@Override
+	public String toString() {
+		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", celular=" + celular + ", endereco="
+				+ endereco + ", pais=" + pais + "]";
+	}
+   
+   
 }

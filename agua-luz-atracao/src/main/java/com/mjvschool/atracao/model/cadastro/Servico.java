@@ -1,4 +1,4 @@
-package main.java.com.mjvschool.atracao.model.cadastro;
+package com.mjvschool.atracao.model.cadastro;
 
 public enum Servico {
 	AGUA("Água",137.21, "A"),

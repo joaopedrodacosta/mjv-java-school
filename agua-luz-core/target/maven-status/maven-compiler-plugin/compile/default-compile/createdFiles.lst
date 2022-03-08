@@ -1,0 +1,12 @@
+mjv\al\atracao\model\Servico.class
+mjv\al\atracao\repository\ContratoRepository.class
+mjv\al\atracao\model\Pais.class
+mjv\al\atracao\model\NotificacaoTipo.class
+mjv\al\atracao\util\FormatUtil.class
+mjv\al\atracao\model\Endereco.class
+mjv\al\atracao\service\ContratoService.class
+mjv\al\atracao\service\LeitorContrato.class
+mjv\al\atracao\util\TextoUtil.class
+mjv\al\atracao\model\Pessoa.class
+mjv\al\atracao\service\GeradorArquivo.class
+mjv\al\atracao\model\Contrato.class

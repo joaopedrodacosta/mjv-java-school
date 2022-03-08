@@ -1,11 +1,9 @@
-package com.mjvschool.atracao.repository;
+package mjv.al.atracao.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mjvschool.atracao.model.contrato.Contrato;
-
-
+import mjv.al.atracao.model.Contrato;
 
 public class ContratoRepository {
 	private List <Contrato> contratos = new ArrayList<Contrato>();
