@@ -80,6 +80,7 @@ public class GeradorArquivo {
 		
 		System.out.println(conteudo.toString());
 		
+		//pode-se criar um único método para gerar os arquivos
 		File output = new File("C:\\estudo\\mjv-java-school\\agua-luz-output");
 		if(!output.exists())
 			output.mkdirs();
@@ -94,7 +95,7 @@ public class GeradorArquivo {
 		}
 	}
 	
-
+	/*
 	public void gerarArquivoContrato(List<Contrato> contratos) throws ParseException {
 		
 		
@@ -149,4 +150,5 @@ public class GeradorArquivo {
 		}
 	}
 	}
+	*/
 }

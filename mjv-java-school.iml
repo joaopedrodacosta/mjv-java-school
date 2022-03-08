@@ -8,6 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/classe-stringBuilder/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/notification/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/teste-performance/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/agua-luz-atracao-novo/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/agua-luz-core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/agua-luz-notificacao/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

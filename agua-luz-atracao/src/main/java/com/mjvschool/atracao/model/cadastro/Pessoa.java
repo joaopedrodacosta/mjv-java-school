@@ -1,4 +1,4 @@
-package com.mjvschool.atracao.model.cadastro;
+package main.java.com.mjvschool.atracao.model.cadastro;
 
 public class Pessoa {
 	private String nome;

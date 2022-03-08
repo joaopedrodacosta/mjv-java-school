@@ -1,21 +1,15 @@
-package com.mjvschool.atracao.app;
 
+package main.java.com.mjvschool.atracao.app;
+
+import com.mjvschool.atracao.model.contrato.Contrato;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.mjvschool.atracao.model.cadastro.Endereco;
-import com.mjvschool.atracao.model.cadastro.NotificacaoTipo;
-import com.mjvschool.atracao.model.cadastro.Pais;
-import com.mjvschool.atracao.model.cadastro.Pessoa;
-import com.mjvschool.atracao.model.cadastro.Servico;
-import com.mjvschool.atracao.model.contrato.Contrato;
-import com.mjvschool.atracao.output.GeradorArquivo;
-import com.mjvschool.atracao.repository.ContratoRepository;
 
 public class AguaLuzAtracaoApp {
-	private static ContratoRepository contratoRepositorio = new ContratoRepository();
+	private static contratoRepositorio = new ContratoRepository();
 	public static void main(String[] args) throws ParseException {
 		faseAtracao();
 		faseGeracaoArquivo();
