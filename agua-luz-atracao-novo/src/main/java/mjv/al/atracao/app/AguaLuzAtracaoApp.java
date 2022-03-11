@@ -1,4 +1,4 @@
-package mjv.al.atracao.app;
+package main.java.mjv.al.atracao.app;
 
 import java.time.LocalDateTime;
 import java.util.List;

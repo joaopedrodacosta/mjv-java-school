@@ -44,6 +44,7 @@ public class Pessoa {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
 	@Override
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", celular=" + celular + ", endereco="

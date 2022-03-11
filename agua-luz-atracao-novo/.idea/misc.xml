@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../agua-luz-core/pom.xml" />
         <option value="$PROJECT_DIR$/../agua-luz-notificacao/pom.xml" />
+        <option value="$PROJECT_DIR$/../agua-luz-atracao/pom.xml" />
       </list>
     </option>
   </component>

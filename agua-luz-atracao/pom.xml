@@ -3,6 +3,18 @@
   <groupId>mjv-school</groupId>
   <artifactId>agua-luz-atracao</artifactId>
   <version>1.0</version>
-  <name>Agua Luz Atração</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <name>Agua Luz Atração</name>
   <description>Sistema para atração de cadastros para contratos de instalação de Água e Luz</description>
 </project>
