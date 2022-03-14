@@ -18,10 +18,11 @@ public class AlunoRepository {
 
 			StringBuilder sql = new StringBuilder();
 
-			sql.append("insert into tab_aluno (nome, altura,sexo, ativo, cd_cidade)");
+			sql.append("insert into tab_aluno (nome, altura ,sexo, ativo, cd_cidade)");
 			sql.append(" values (?,?,?,?,?)");
 
 			PreparedStatement procedimentoSql = connection.prepareStatement(sql.toString());
+
 			procedimentoSql.setString(1, aluno.getNome());
 
 			if(aluno.getAltura()==null)
@@ -43,9 +44,10 @@ public class AlunoRepository {
 	}
 
 
-	public void listarAlunos(Aluno aluno){
+	public void listarAlunos(){
 
 		try{
+			FabricaConexao.abrirConexao();
 		Connection connection = FabricaConexao.getConexao();
 
 		String sql = "SELECT * FROM tab_aluno ";
@@ -53,7 +55,7 @@ public class AlunoRepository {
 		PreparedStatement procedimentoSql = connection.prepareStatement(sql);
 			ResultSet result = procedimentoSql.executeQuery(sql);
 			while(result.next()){
-				int idAluno = result.getInt("id_aluno");
+				int idAluno = result.getInt("id");
 				String nome = result.getString("nome");
 				double altura = result.getDouble("altura");
 				String sexo = result.getString("sexo");
@@ -74,13 +76,18 @@ public class AlunoRepository {
 
         Aluno aluno = null;
         try{
+			FabricaConexao.abrirConexao();
             Connection connection = FabricaConexao.getConexao();
 
-            String sql = "SELECT * FROM tab_aluno WHERE ID = ? ";
+			StringBuilder sql = new StringBuilder();
 
-            PreparedStatement procedimentoSql = connection.prepareStatement(sql);
+            sql.append("SELECT * FROM tab_aluno ");
+			sql.append("WHERE id = ?");
+
+            PreparedStatement procedimentoSql = connection.prepareStatement(sql.toString());
             procedimentoSql.setInt(1, id);
-            ResultSet result = procedimentoSql.executeQuery(sql);
+            ResultSet result = procedimentoSql.executeQuery();
+
             if(result.next()){
                 aluno = new Aluno();
                 aluno.setIdAluno(result.getInt("id"));
@@ -103,15 +110,25 @@ public class AlunoRepository {
 	public boolean deletar(Aluno aluno){
 			boolean exlusao = false;
 		try{
+			FabricaConexao.abrirConexao();
 			Connection connection = FabricaConexao.getConexao();
 
-			String sql = ("DELETE tab_aluno where id = ?");
+			String sql = ("SELECT * FROM tab_aluno");
+			String sql2 = ("DELETE from tab_aluno where id = ?");
 
 			PreparedStatement procedimentoSql = connection.prepareStatement(sql);
-			procedimentoSql.setInt(1, aluno.getIdAluno());
-			procedimentoSql.execute();
+			PreparedStatement procedimentoSql2 = connection.prepareStatement(sql2);
+			ResultSet result  = procedimentoSql.executeQuery(sql);
+			if(result.next())
+				aluno.setIdAluno(result.getInt("id"));
+
+			procedimentoSql2.setInt(1, aluno.getIdAluno());
+
+			procedimentoSql2.execute();
 			System.out.println("Exclusão realizada com sucesso");
 
+			procedimentoSql.close();
+			procedimentoSql2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,29 +141,35 @@ public class AlunoRepository {
 	public void alterarAluno(Aluno aluno){
 
 		try{
+			FabricaConexao.abrirConexao();
 			Connection connection = FabricaConexao.getConexao();
 
-			StringBuilder sql = new StringBuilder();
+			String sql = ("SELECT * FROM tab_aluno");
+			String sql2 = ("update tab_aluno set nome = ?, altura = ?, sexo = ?, ativo = ? where id = ?");
 
-			sql.append("update tab_aluno set nome = ?, altura = ?, sexo = ?, ativo = ?");
-			sql.append(" where id = ?");
 
-			PreparedStatement procedimentoSql = connection.prepareStatement(sql.toString());
+			PreparedStatement procedimentoSql = connection.prepareStatement(sql);
+			PreparedStatement procedimentoSql2 = connection.prepareStatement(sql2);
+			ResultSet result  = procedimentoSql.executeQuery(sql);
+			if(result.next())
+			aluno.setIdAluno(result.getInt("id"));
 
-			procedimentoSql.setString(1, aluno.getNome());
+			procedimentoSql2.setString(1, aluno.getNome());
 			if(aluno.getAltura()==null)
-				procedimentoSql.setNull(2, java.sql.Types.NULL);
+				procedimentoSql2.setNull(2, java.sql.Types.NULL);
 			else
-				procedimentoSql.setDouble(2, aluno.getAltura());
+				procedimentoSql2.setDouble(2, aluno.getAltura());
 
-			procedimentoSql.setString(3, aluno.getSexo());
-			procedimentoSql.setBoolean(4, aluno.isAtivo());
+			procedimentoSql2.setString(3, aluno.getSexo());
+			procedimentoSql2.setBoolean(4, aluno.isAtivo());
+			procedimentoSql2.setInt(5, aluno.getIdAluno());
 
 
-			procedimentoSql.execute();
+			procedimentoSql2.execute();
 
 			System.out.println("Alteração realizada com sucesso");
 			procedimentoSql.close();
+			procedimentoSql2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
