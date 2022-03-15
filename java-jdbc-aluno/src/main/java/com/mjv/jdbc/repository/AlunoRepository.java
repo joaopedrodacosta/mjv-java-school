@@ -44,6 +44,7 @@ public class AlunoRepository {
 	}
 
 
+	//listando alunos que estão no banco de dados
 	public void listarAlunos(){
 
 		try{
@@ -72,6 +73,7 @@ public class AlunoRepository {
 
 	}
 
+	//busca de aluno por id, retorna um
     public Aluno buscarAluno(int id){
 
         Aluno aluno = null;
