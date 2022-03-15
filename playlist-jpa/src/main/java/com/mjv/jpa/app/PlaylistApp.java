@@ -82,8 +82,8 @@ public static void main(String[]args) {
     mjr.save(musica4);
     mjr.save(musica5);
     mjr.save(musica6);
-*/
 
+/*
     List<Musica> playlist = mjr.findAll("Rap nacional");
     for (Musica m: playlist){
         System.out.println("----------------------");
@@ -91,6 +91,8 @@ public static void main(String[]args) {
     }
         System.out.println("----------------------");
 
+
+ */
 
 
 }
